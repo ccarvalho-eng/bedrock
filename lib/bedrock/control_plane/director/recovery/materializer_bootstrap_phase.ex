@@ -283,7 +283,7 @@ defmodule Bedrock.ControlPlane.Director.Recovery.MaterializerBootstrapPhase do
   defp filter_logs_for_shard(logs, shard_id) do
     logs
     |> Enum.filter(fn {_log_id, tags} ->
-      shard_id in tags
+      tags == [] or shard_id in tags
     end)
     |> Map.new()
   end
